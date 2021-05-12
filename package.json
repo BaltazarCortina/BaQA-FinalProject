@@ -1,0 +1,19 @@
+{
+  "name": "final-project",
+  "version": "1.0.0",
+  "description": "Final Project got the Become a QA Course by Radium Rocket.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaltazarCortina/BaQA-FinalProject.git"
+  },
+  "author": "Baltazar Cortina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BaltazarCortina/BaQA-FinalProject/issues"
+  },
+  "homepage": "https://github.com/BaltazarCortina/BaQA-FinalProject#readme"
+}
