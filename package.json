@@ -4,7 +4,8 @@
   "description": "Final Project got the Become a QA Course by Radium Rocket.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx wdio run ./wdio.conf.js",
+    "test-1": "npx wdio run ./wdio.conf.js --spec example.e2e.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,16 @@
   "bugs": {
     "url": "https://github.com/BaltazarCortina/BaQA-FinalProject/issues"
   },
-  "homepage": "https://github.com/BaltazarCortina/BaQA-FinalProject#readme"
+  "homepage": "https://github.com/BaltazarCortina/BaQA-FinalProject#readme",
+  "dependencies": {
+    "@wdio/cli": "^7.5.7"
+  },
+  "devDependencies": {
+    "@wdio/jasmine-framework": "^7.5.3",
+    "@wdio/local-runner": "^7.5.7",
+    "@wdio/spec-reporter": "^7.5.7",
+    "@wdio/sync": "^7.5.7",
+    "chromedriver": "^90.0.0",
+    "wdio-chromedriver-service": "^7.0.0"
+  }
 }
