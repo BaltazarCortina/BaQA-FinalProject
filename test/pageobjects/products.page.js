@@ -4,6 +4,7 @@ class ProductsPage extends Page {
     // get inputUsername () { return $('input[name="user-name"]') }
     
     get products () { return $$('.inventory_item') }
+    get cartBtn () { return $('.shopping_cart_link') }
 
     // get productsImages () { return $$('.inventory_item_img a') }
     // get productsNames () { return $$('.inventory_item_img a') }
@@ -23,6 +24,14 @@ class ProductsPage extends Page {
         let addToCart = this.products[position].$('button');
 
         return { image, name, price, addToCart }
+    }
+
+    addToCart (product) {
+        product.addToCart.click();
+    }
+
+    goToCart () {
+        this.cartBtn.click();
     }
 
     /*
