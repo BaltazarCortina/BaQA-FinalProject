@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "npx wdio run ./wdio.conf.js",
-    "test-1": "npx wdio run ./wdio.conf.js --spec example.e2e.js"
+    "test-login": "npx wdio run ./wdio.conf.js --spec login.test.js",
+    "test-products": "npx wdio run ./wdio.conf.js --spec products.test.js",
+    "test-menu": "npx wdio run ./wdio.conf.js --spec menu.test.js",
+    "test-cart": "npx wdio run ./wdio.conf.js --spec cart.test.js",
+    "test-checkout": "npx wdio run ./wdio.conf.js --spec checkout.test.js",
+    "test-footer": "npx wdio run ./wdio.conf.js --spec footer.test.js"
   },
   "repository": {
     "type": "git",

@@ -1,17 +1,9 @@
 const Page = require('./page');
 
-class ProductsPage extends Page {
-    // get inputUsername () { return $('input[name="user-name"]') }
-    
+class ProductsPage extends Page {    
     get products () { return $$('.inventory_item') }
-    get cartBtn () { return $('.shopping_cart_link') }
-
-    // get productsImages () { return $$('.inventory_item_img a') }
-    // get productsNames () { return $$('.inventory_item_img a') }
-    // get productsPrices () { return $$('.inventory_item_price') }
-    // get productsAddToCart () { return $$('.inventory_item_price') }
-
-    
+    get sortBtn () { return $('select') }
+    get options () { return $$('select option') }
 
     open () {
         super.open('inventory.html');
@@ -30,26 +22,23 @@ class ProductsPage extends Page {
         product.addToCart.click();
     }
 
-    goToCart () {
-        this.cartBtn.click();
+    sortBy (criteria) {
+        this.sortBtn.click();
+        switch (criteria) {
+            case 'AtoZ':
+                this.options[0].click();
+                break;
+            case 'ZtoA':
+                this.options[1].click();
+                break;
+            case 'LtoH':
+                this.options[2].click();
+                break;
+            case 'HtoL':
+                this.options[3].click();
+                break;
+        }
     }
-
-    /*
-    login (username, password) {
-        this.inputUsername.setValue(username);  
-        this.inputPassword.setValue(password);
-        this.submit();
-    }
-
-    submit () {
-        this.submitBtn.click();
-    }
-
-    inputValue (field, value) {
-        this[field].setValue(value);
-        browser.keys('Tab');
-    }
-    */
 }
 
 module.exports = new ProductsPage();

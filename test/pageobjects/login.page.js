@@ -4,6 +4,7 @@ class LoginPage extends Page {
     get inputUsername () { return $('input[name="user-name"]') }
     get inputPassword () { return $('input[name="password"]') }
     get submitBtn () { return $('input[type="submit"]') }
+    get errorMsg () { return $('.error-message-container h3') }    
 
     open () {
         super.open('');
