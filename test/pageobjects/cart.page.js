@@ -5,6 +5,7 @@ class CartPage extends Page {
     get continueShoppingBtn () { return $('#continue-shopping') }
     get checkoutBtn () { return $('#checkout') }
     get cartProducts () { return $$('.cart_item') }
+    get counter () { return $$('.shopping_cart_badge') }
     
     goToCart () {
         this.cartBtn.click();

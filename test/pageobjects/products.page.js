@@ -11,7 +11,7 @@ class ProductsPage extends Page {
 
     selectProduct (position) {
         let image = this.products[position].$('.inventory_item_img a');
-        let name = this.products[position].$('.inventory_item_img a');
+        let name = this.products[position].$('.inventory_item_description a');
         let price = this.products[position].$('.inventory_item_price');
         let addToCart = this.products[position].$('button');
 
@@ -38,6 +38,19 @@ class ProductsPage extends Page {
                 this.options[3].click();
                 break;
         }
+    }
+
+    getSortedList (criteria) {
+        let productsList = [];
+        for (let i = 0; i < this.products.length; i++) {
+            let product = this.selectProduct(i);
+            if (criteria === 'name') {
+                productsList.push(product.name.getText());
+            } else if (criteria === 'price') {
+                productsList.push(product.price.getText());
+            }
+        }
+        return productsList;
     }
 }
 

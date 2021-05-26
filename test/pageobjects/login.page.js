@@ -16,6 +16,30 @@ class LoginPage extends Page {
         this.submit();
     }
 
+    standardLogin () {
+        let username = 'standard_user';
+        let password = 'secret_sauce';
+        this.inputUsername.setValue(username);  
+        this.inputPassword.setValue(password);
+        this.submit();
+    }
+
+    problemLogin () {
+        let username = 'problem_user';
+        let password = 'secret_sauce';
+        this.inputUsername.setValue(username);  
+        this.inputPassword.setValue(password);
+        this.submit();
+    }
+
+    performanceGlitchLogin () {
+        let username = 'performance_glitch_user';
+        let password = 'secret_sauce';
+        this.inputUsername.setValue(username);  
+        this.inputPassword.setValue(password);
+        this.submit();
+    }
+
     submit () {
         this.submitBtn.click();
     }

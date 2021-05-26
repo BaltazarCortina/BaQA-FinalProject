@@ -25,13 +25,10 @@ describe('Footer:', () => {
         browser.switchWindow('https://www.saucedemo.com/inventory.html');
     })
 
-    //Resolver como testearlo. Pide que te loguees
     it ('Linkedin\'s link', () => {
         FooterPage.openLinkedin();
-        browser.pause(2000);
-        browser.switchWindow('https://www.linkedin.com/company/sauce-labs/');
-        browser.pause(2000);
-        expect(browser.getUrl()).toBe('https://www.linkedin.com/company/sauce-labs/');
+        browser.switchWindow('Sign Up | LinkedIn');
+        expect(browser).toHaveTitle('Sign Up | LinkedIn');
         browser.switchWindow('https://www.saucedemo.com/inventory.html');
     })
 })
