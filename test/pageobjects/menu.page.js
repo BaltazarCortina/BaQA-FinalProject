@@ -3,6 +3,7 @@ const Page = require('./page');
 class MenuPage extends Page {
     get menuBtn () { return $('#react-burger-menu-btn') }
     get closeBtn () { return $('#react-burger-cross-btn') }
+    get menuContainer () { return $('#menu_button_container .bm-menu-wrap') }
     
     get allItemsBtn () { return $('#inventory_sidebar_link') }
     get aboutBtn () { return $('#about_sidebar_link') }
@@ -11,6 +12,7 @@ class MenuPage extends Page {
     
     openMenu () {
         this.menuBtn.click();
+        browser.pause(500);
     }
 
     closeMenu () {

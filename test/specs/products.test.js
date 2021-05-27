@@ -6,8 +6,6 @@ const CartPage = require('../pageobjects/cart.page');
 const CheckoutPage = require('../pageobjects/checkout.page');
 const MenuPage = require('../pageobjects/menu.page');
 
-//before each reset app status and refresh page
-
 describe('Testing Products section:', () => {
     beforeAll('Open page and login with standard account', () => {
         LoginPage.open();

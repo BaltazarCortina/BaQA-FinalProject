@@ -1,4 +1,5 @@
 const LoginPage = require('../pageobjects/login.page');
+const productsPage = require('../pageobjects/products.page');
 
 describe('Testing Login section:', () => {
     describe ('Should allow access with correct credentials', () => {
@@ -98,5 +99,11 @@ describe('Testing Login section:', () => {
         LoginPage.login('locked_out_user', 'secret_sauce');
     
         expect(LoginPage.errorMsg).toHaveText('Epic sadface: Sorry, this user has been locked out.');
+    })
+
+    it ('Should deny access to Products section if you\'re not logged in', () => {
+        productsPage.open();
+
+        expect(LoginPage.errorMsg).toHaveText('Epic sadface: You can only access \'/inventory.html\' when you are logged in.');
     })
 })

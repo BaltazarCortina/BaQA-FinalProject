@@ -6,9 +6,9 @@ const CheckoutPage = require('../pageobjects/checkout.page');
 const MenuPage = require('../pageobjects/menu.page');
 
 describe('Testing Cart section:', () => {
-    beforeAll('Open page and login with valid account', () => {
+    beforeAll('Open page and login with standard account', () => {
         LoginPage.open();
-        LoginPage.login('standard_user', 'secret_sauce');
+        LoginPage.standardLogin();
     })
 
 // Products tests
