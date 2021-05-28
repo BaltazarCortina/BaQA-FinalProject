@@ -3,7 +3,7 @@ const ProductsPage = require('../pageobjects/products.page');
 const CartPage = require('../pageobjects/cart.page');
 const MenuPage = require('../pageobjects/menu.page');
 
-describe('Testing Menu section:', () => {
+describe('Testing MENU section:', () => {
     beforeAll('Open page and login with standard account', () => {
         LoginPage.standardLogin();
     })

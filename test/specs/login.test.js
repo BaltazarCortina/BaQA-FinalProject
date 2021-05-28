@@ -1,7 +1,7 @@
 const LoginPage = require('../pageobjects/login.page');
 const productsPage = require('../pageobjects/products.page');
 
-describe('Testing Login section:', () => {
+describe('Testing LOGIN section:', () => {
     describe ('Should allow access with correct credentials', () => {
         it ('standard user', () => {
             LoginPage.open();

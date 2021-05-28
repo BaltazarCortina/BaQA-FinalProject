@@ -5,7 +5,7 @@ const CartPage = require('../pageobjects/cart.page');
 const CheckoutPage = require('../pageobjects/checkout.page');
 const MenuPage = require('../pageobjects/menu.page');
 
-describe('Footer:', () => {
+describe('Testing FOOTER section:', () => {
     beforeAll('Open page and login with standard account', () => {
         LoginPage.standardLogin();
     })

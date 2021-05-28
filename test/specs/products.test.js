@@ -1,12 +1,10 @@
 const LoginPage = require('../pageobjects/login.page');
 const ProductsPage = require('../pageobjects/products.page');
 const ProductPage = require('../pageobjects/product.page');
-const FooterPage = require('../pageobjects/footer.page');
 const CartPage = require('../pageobjects/cart.page');
-const CheckoutPage = require('../pageobjects/checkout.page');
 const MenuPage = require('../pageobjects/menu.page');
 
-describe('Testing Products section:', () => {
+describe('Testing PRODUCTS section:', () => {
     beforeAll('Open page and login with standard account', () => {
         LoginPage.standardLogin();
     })
@@ -41,7 +39,6 @@ describe('Testing Products section:', () => {
     describe ('Add to cart', () => {
         it ('Adding a first product to the cart', () => {
             const product = ProductsPage.selectProduct(0);
-            const productName = product.name.getText();       //Ver si lo voy a usar
             ProductsPage.addToCart(product);
 
             expect(CartPage.counter).toHaveText('1');
@@ -49,7 +46,6 @@ describe('Testing Products section:', () => {
         
         it ('Adding a second product to the cart', () => {
             const product = ProductsPage.selectProduct(1);
-            const productName = product.name.getText();        //Ver si lo voy a usar
             ProductsPage.addToCart(product);
 
             expect(CartPage.counter).toHaveText('2');
@@ -59,7 +55,6 @@ describe('Testing Products section:', () => {
     describe ('Remove from cart', () => {
         it ('Removing the first product from the cart', () => {
             const product = ProductsPage.selectProduct(0);
-            const productName = product.name.getText();
             ProductsPage.addToCart(product);
 
             expect(CartPage.counter).toHaveText('1');
@@ -67,8 +62,51 @@ describe('Testing Products section:', () => {
         
         it ('Removing the second product from the cart', () => {
             const product = ProductsPage.selectProduct(1);
-            const productName = product.name.getText();
             ProductsPage.addToCart(product);
+
+            expect(CartPage.counter).not.toExist();
+        })  
+    })
+
+    describe ('Adding to cart from the product\'s page', () => {
+        afterEach('Go back to the Products section', () => {
+            ProductPage.goBack();
+        })
+
+        it ('Opening a product and adding it to the cart', () => {
+            const product = ProductsPage.selectProduct(4);
+            product.name.click();
+            ProductPage.addToCart();
+
+            expect(CartPage.counter).toHaveText('1');
+        })
+        
+        it ('Opening a second product and adding it to the cart', () => {
+            const product = ProductsPage.selectProduct(5);
+            product.name.click();
+            ProductPage.addToCart();
+
+            expect(CartPage.counter).toHaveText('2');
+        })  
+    })
+
+    describe ('Removing from cart from the product\'s page', () => {
+        afterEach('Go back to Products section', () => {
+            ProductPage.goBack();
+        })
+
+        it ('Opening the product and removing it from the cart', () => {
+            const product = ProductsPage.selectProduct(4);
+            product.name.click();
+            ProductPage.addToCart();
+
+            expect(CartPage.counter).toHaveText('1');
+        })
+        
+        it ('Opening the second product and removing it from the cart', () => {
+            const product = ProductsPage.selectProduct(5);
+            product.name.click();
+            ProductPage.addToCart();
 
             expect(CartPage.counter).not.toExist();
         })  

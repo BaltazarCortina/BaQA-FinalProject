@@ -13,7 +13,11 @@
     "test-menu": "npx wdio run ./wdio.conf.js --spec menu.test.js",
     "test-cart": "npx wdio run ./wdio.conf.js --spec cart.test.js",
     "test-checkout": "npx wdio run ./wdio.conf.js --spec checkout.test.js",
-    "test-footer": "npx wdio run ./wdio.conf.js --spec footer.test.js"
+    "test-footer": "npx wdio run ./wdio.conf.js --spec footer.test.js",
+
+    "test-e2e1": "npx wdio run ./wdio.conf.js --spec test1.e2e.js",
+    "test-e2e2": "npx wdio run ./wdio.conf.js --spec test2.e2e.js",
+    "test-e2e3": "npx wdio run ./wdio.conf.js --spec test3.e2e.js"
   },
   "repository": {
     "type": "git",

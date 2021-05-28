@@ -4,7 +4,7 @@ const CartPage = require('../pageobjects/cart.page');
 const CheckoutPage = require('../pageobjects/checkout.page');
 const MenuPage = require('../pageobjects/menu.page');
 
-describe('Testing Checkout section:', () => {
+describe('Testing CHECKOUT section:', () => {
     beforeAll('Open page and login with standard account', () => {
         LoginPage.standardLogin();
     })
@@ -131,12 +131,9 @@ describe('Testing Checkout section:', () => {
             CartPage.checkout();
             CheckoutPage.fillInformation('FirstName', 'LastName', 'Zip');
 
-            let subtotal = CheckoutPage.subtotal.getText();
-            subtotal = parseFloat(subtotal.split('Item total: $').join(''));
-            let tax = CheckoutPage.tax.getText();
-            tax = parseFloat(tax.split('Tax: $').join(''));
-            let total = CheckoutPage.total.getText();
-            total = parseFloat(total.split('Total: $').join(''));
+            const subtotal = parseFloat(CheckoutPage.subtotal.getText().split('Item total: $').join(''));
+            const tax = parseFloat(CheckoutPage.tax.getText().split('Tax: $').join(''));
+            const total = parseFloat(CheckoutPage.total.getText().split('Total: $').join(''));
 
             expect(subtotal).toEqual(productPrice);
             expect(tax).toBeCloseTo(productTax);
@@ -146,10 +143,8 @@ describe('Testing Checkout section:', () => {
         it ('Adding two product', () => {
             const product1 = ProductsPage.selectProduct(0);
             const product2 = ProductsPage.selectProduct(3);
-            let product1Price = product1.price.getText();
-            let product2Price = product2.price.getText();
-            product1Price = parseFloat(product1Price.split('$').join(''));
-            product2Price = parseFloat(product2Price.split('$').join(''));
+            const product1Price = parseFloat(product1.price.getText().split('$').join(''));
+            const product2Price = parseFloat(product2.price.getText().split('$').join(''));
             const productsPrice = product1Price + product2Price;
             const productsTax = productsPrice * 0.08;
 
@@ -159,12 +154,9 @@ describe('Testing Checkout section:', () => {
             CartPage.checkout();
             CheckoutPage.fillInformation('FirstName', 'LastName', 'Zip');
 
-            let subtotal = CheckoutPage.subtotal.getText();
-            subtotal = parseFloat(subtotal.split('Item total: $').join(''));
-            let tax = CheckoutPage.tax.getText();
-            tax = parseFloat(tax.split('Tax: $').join(''));
-            let total = CheckoutPage.total.getText();
-            total = parseFloat(total.split('Total: $').join(''));
+            const subtotal = parseFloat(CheckoutPage.subtotal.getText().split('Item total: $').join(''));
+            const tax = parseFloat(CheckoutPage.tax.getText().split('Tax: $').join(''));
+            const total = parseFloat(CheckoutPage.total.getText().split('Total: $').join(''));
 
             expect(subtotal).toEqual(productsPrice);
             expect(tax).toBeCloseTo(productsTax);
@@ -172,9 +164,31 @@ describe('Testing Checkout section:', () => {
         })
     })
 
-    it ('Completing purchase', () => {
-        CheckoutPage.finish();
+    it ('Cancel purchase', () => {
+        CheckoutPage.cancel();
 
-        expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-complete.html');
+        expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+    })
+    
+    describe ('Finish purchase and check that the cart resets', () => {
+        beforeAll('Reset app status and open Products section', () => {
+            CartPage.goToCart();
+            CartPage.checkout();
+            CheckoutPage.fillInformation('FirstName', 'LastName', 'Zip');
+        })  
+
+        it ('Complete purchase', () => {
+            CheckoutPage.finish();
+    
+            expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-complete.html');
+            expect(CheckoutPage.successMsg).toHaveText('THANK YOU FOR YOUR ORDER');
+        })
+    
+        it ('Completing purchase', () => {
+            CheckoutPage.backHome();
+            CartPage.goToCart();
+            
+            expect(CartPage.cartProducts).toBeElementsArrayOfSize(0);
+        })
     })
 })

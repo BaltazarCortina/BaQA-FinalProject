@@ -15,6 +15,9 @@ class CheckoutPage extends Page {
     get subtotal () { return $('.summary_subtotal_label') }
     get tax () { return $('.summary_tax_label') }
     get total () { return $('.summary_total_label') }
+
+    get backHomeBtn () { return $('#back-to-products') }
+    get successMsg () { return $('.complete-header') }
     
     fillInformation (firstName, lastName, zip) {
         this.inputFirstName.setValue(firstName);  
@@ -33,6 +36,10 @@ class CheckoutPage extends Page {
 
     finish () {
         this.finishBtn.click();
+    }
+
+    backHome () {
+        this.backHomeBtn.click();
     }
 
     selectProduct (position) {
