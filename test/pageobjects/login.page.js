@@ -17,6 +17,7 @@ class LoginPage extends Page {
     }
 
     standardLogin () {
+        this.open();
         let username = 'standard_user';
         let password = 'secret_sauce';
         this.inputUsername.setValue(username);  
@@ -25,6 +26,7 @@ class LoginPage extends Page {
     }
 
     problemLogin () {
+        this.open();
         let username = 'problem_user';
         let password = 'secret_sauce';
         this.inputUsername.setValue(username);  
@@ -33,6 +35,7 @@ class LoginPage extends Page {
     }
 
     performanceGlitchLogin () {
+        this.open();
         let username = 'performance_glitch_user';
         let password = 'secret_sauce';
         this.inputUsername.setValue(username);  

@@ -20,18 +20,22 @@ class MenuPage extends Page {
     }
 
     goToItems () {
+        this.openMenu();
         this.allItemsBtn.click();
     }
 
     goToAbout () {
+        this.openMenu();
         this.aboutBtn.click();
     }
 
     logout () {
+        this.openMenu();
         this.logoutBtn.click();
     }
 
     resetApp () {
+        this.openMenu();
         this.resetAppBtn.click();
     }
 }

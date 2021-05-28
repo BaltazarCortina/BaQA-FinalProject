@@ -7,7 +7,6 @@ const MenuPage = require('../pageobjects/menu.page');
 
 describe('Footer:', () => {
     beforeAll('Open page and login with standard account', () => {
-        LoginPage.open();
         LoginPage.standardLogin();
     })
 
@@ -27,6 +26,7 @@ describe('Footer:', () => {
 
     it ('Linkedin\'s link', () => {
         FooterPage.openLinkedin();
+        browser.pause(1000);                        //LinkedIn asks you to Sign in and the test sometimes fails if you don't wait long enough for it to redirect you to the Sign in page.
         browser.switchWindow('Sign Up | LinkedIn');
         expect(browser).toHaveTitle('Sign Up | LinkedIn');
         browser.switchWindow('https://www.saucedemo.com/inventory.html');

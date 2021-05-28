@@ -31,6 +31,19 @@ class CartPage extends Page {
     checkout () {
         this.checkoutBtn.click();
     }
+
+    getItemsList (criteria) {
+        let productsList = [];
+        for (let i = 0; i < this.cartProducts.length; i++) {
+            let product = this.selectProduct(i);
+            if (criteria === 'name') {
+                productsList.push(product.name.getText());
+            } else if (criteria === 'price') {
+                productsList.push(product.price.getText());
+            }
+        }
+        return productsList;
+    }
 }
 
 module.exports = new CartPage();

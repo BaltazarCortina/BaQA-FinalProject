@@ -11,11 +11,13 @@ class ProductsPage extends Page {
 
     selectProduct (position) {
         let image = this.products[position].$('.inventory_item_img a');
+        let imageSrc = this.products[position].$('.inventory_item_img a img');
         let name = this.products[position].$('.inventory_item_description a');
+        let description = this.products[position].$('.inventory_item_desc');
         let price = this.products[position].$('.inventory_item_price');
         let addToCart = this.products[position].$('button');
 
-        return { image, name, price, addToCart }
+        return { image, imageSrc, name, description, price, addToCart }
     }
 
     addToCart (product) {

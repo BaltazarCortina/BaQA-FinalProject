@@ -7,7 +7,6 @@ const MenuPage = require('../pageobjects/menu.page');
 
 describe('Testing Checkout section:', () => {
     beforeAll('Open page and login with standard account', () => {
-        LoginPage.open();
         LoginPage.standardLogin();
     })
 
