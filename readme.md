@@ -21,7 +21,7 @@ Automated tests for the website www.saucedemo.com.
 
 **To run the tests for a SPECIFIC SECTION:**
 1. Open a new terminal in the project's folder
-2. Enter the command: 'npm run test-*section-name*'
+2. Enter the command: 'npm run test-*sectionName*', e.g., 'npm run test-login'
 
 The sections names are as it follows:
 - Login section:        *login*
