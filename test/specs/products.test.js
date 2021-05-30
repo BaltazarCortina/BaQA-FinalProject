@@ -196,15 +196,5 @@ describe('Testing PRODUCTS section:', () => {
             
             expect(ProductPage.image).toHaveAttributeContaining('src', productImageAddress);
         })
-        
     })
-
-/*
-    it ('Click prod', () => {
-        const product = ProductsPage.selectProduct(0);
-    
-        product.addToCart.click();
-        expect(product.price).toHaveTextContaining('$');
-    })
-*/
 })

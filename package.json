@@ -6,8 +6,7 @@
   "scripts": {
     "test": "npx wdio run ./wdio.conf.js",
 
-    "test-test": "npx wdio run ./wdio.conf.js --spec prueba.js",
-
+    "test-sections": "npx wdio run ./wdio.conf.js --spec .test.js",
     "test-login": "npx wdio run ./wdio.conf.js --spec login.test.js",
     "test-products": "npx wdio run ./wdio.conf.js --spec products.test.js",
     "test-menu": "npx wdio run ./wdio.conf.js --spec menu.test.js",
@@ -15,9 +14,12 @@
     "test-checkout": "npx wdio run ./wdio.conf.js --spec checkout.test.js",
     "test-footer": "npx wdio run ./wdio.conf.js --spec footer.test.js",
 
+    "test-e2e": "npx wdio run ./wdio.conf.js --spec .e2e.js",
     "test-e2e1": "npx wdio run ./wdio.conf.js --spec test1.e2e.js",
     "test-e2e2": "npx wdio run ./wdio.conf.js --spec test2.e2e.js",
-    "test-e2e3": "npx wdio run ./wdio.conf.js --spec test3.e2e.js"
+    "test-e2e3": "npx wdio run ./wdio.conf.js --spec test3.e2e.js",
+    "test-e2e4": "npx wdio run ./wdio.conf.js --spec test4.e2e.js",
+    "test-e2e5": "npx wdio run ./wdio.conf.js --spec test5.e2e.js"
   },
   "repository": {
     "type": "git",

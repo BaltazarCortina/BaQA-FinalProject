@@ -1,7 +1,6 @@
 const LoginPage = require('../pageobjects/login.page');
 const ProductsPage = require('../pageobjects/products.page');
 const CartPage = require('../pageobjects/cart.page');
-const CheckoutPage = require('../pageobjects/checkout.page');
 const MenuPage = require('../pageobjects/menu.page');
 
 describe('Testing CART section:', () => {

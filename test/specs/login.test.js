@@ -86,7 +86,6 @@ describe('Testing LOGIN section:', () => {
         })
     })
 
-
     it ('Should deny access to inexistent user', () => {
         LoginPage.open();
         LoginPage.login('different_user', 'secret_sauce');
