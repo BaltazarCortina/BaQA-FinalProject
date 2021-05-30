@@ -19,7 +19,7 @@ describe('Testing PRODUCTS section:', () => {
             ProductsPage.open();
         })
 
-        it ('..by clicking the image', () => {
+        it ('..by clicking on the image', () => {
             const product = ProductsPage.selectProduct(0);
             const productName = product.name.getText();
             product.image.click();
@@ -27,7 +27,7 @@ describe('Testing PRODUCTS section:', () => {
             expect(ProductPage.name).toHaveText(productName);
         })
         
-        it ('..by clicking the name', () => {
+        it ('..by clicking on the name', () => {
             const product = ProductsPage.selectProduct(0);
             const productName = product.name.getText();
             product.name.click();
@@ -36,7 +36,7 @@ describe('Testing PRODUCTS section:', () => {
         })  
     })
 
-    describe ('Add to cart', () => {
+    describe ('Check that a product is added to the cart when you click the "Add to cart" button', () => {
         it ('Adding a first product to the cart', () => {
             const product = ProductsPage.selectProduct(0);
             ProductsPage.addToCart(product);
@@ -52,7 +52,7 @@ describe('Testing PRODUCTS section:', () => {
         })  
     })
 
-    describe ('Remove from cart', () => {
+    describe ('Check that a product is removed from the cart when you click the "Remove" button', () => {
         it ('Removing the first product from the cart', () => {
             const product = ProductsPage.selectProduct(0);
             ProductsPage.addToCart(product);
@@ -68,7 +68,7 @@ describe('Testing PRODUCTS section:', () => {
         })  
     })
 
-    describe ('Adding to cart from the product\'s page', () => {
+    describe ('Check that a product is added to the cart when you click the "Add to cart" button from the product\'s page', () => {
         afterEach('Go back to the Products section', () => {
             ProductPage.goBack();
         })
@@ -90,7 +90,7 @@ describe('Testing PRODUCTS section:', () => {
         })  
     })
 
-    describe ('Removing from cart from the product\'s page', () => {
+    describe ('Check that a product is removed from the cart when you click the "Remove" button from the product\'s page', () => {
         afterEach('Go back to Products section', () => {
             ProductPage.goBack();
         })
@@ -145,7 +145,7 @@ describe('Testing PRODUCTS section:', () => {
     })
 
     describe ('Check that a specific product has the right information', () => {
-        beforeAll('Open page and login with standard account', () => {
+        beforeAll('Sort the products by name from A to Z', () => {
             ProductsPage.sortBy('AtoZ');
         })
         

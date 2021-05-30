@@ -12,10 +12,10 @@ class CartPage extends Page {
     }
 
     selectProduct (position) {
-        let quantity = this.cartProducts[position].$('.cart_quantity');
-        let name = this.cartProducts[position].$('a .inventory_item_name');
-        let price = this.cartProducts[position].$('.inventory_item_price');
-        let remove = this.cartProducts[position].$('button');
+        const quantity = this.cartProducts[position].$('.cart_quantity');
+        const name = this.cartProducts[position].$('a .inventory_item_name');
+        const price = this.cartProducts[position].$('.inventory_item_price');
+        const remove = this.cartProducts[position].$('button');
 
         return { quantity, name, price, remove }
     }
@@ -33,7 +33,7 @@ class CartPage extends Page {
     }
 
     getItemsList (criteria) {
-        let productsList = [];
+        const productsList = [];
         for (let i = 0; i < this.cartProducts.length; i++) {
             let product = this.selectProduct(i);
             if (criteria === 'name') {

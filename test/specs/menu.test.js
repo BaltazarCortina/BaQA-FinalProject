@@ -9,7 +9,7 @@ describe('Testing MENU section:', () => {
     })
     
     it ('Check that "All items" takes you back to the Products section', () => {
-        let product = ProductsPage.selectProduct(2);
+        const product = ProductsPage.selectProduct(2);
         product.name.click();
         MenuPage.goToItems();
         
@@ -24,7 +24,7 @@ describe('Testing MENU section:', () => {
     
     it ('Check that "Reset app state" resets the state of the app', () => {
         ProductsPage.open();
-        let product = ProductsPage.selectProduct(3);
+        const product = ProductsPage.selectProduct(3);
         ProductsPage.addToCart(product);
         
         expect(CartPage.counter).toHaveText('1');
@@ -38,6 +38,7 @@ describe('Testing MENU section:', () => {
     it ('Check that the cross button closes the menu', () => {
         MenuPage.openMenu();
         MenuPage.closeMenu();
+        
         expect(MenuPage.menuContainer).toBeDisplayed(); 
     })
 

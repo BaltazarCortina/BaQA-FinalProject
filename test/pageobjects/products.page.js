@@ -10,12 +10,12 @@ class ProductsPage extends Page {
     }
 
     selectProduct (position) {
-        let image = this.products[position].$('.inventory_item_img a');
-        let imageSrc = this.products[position].$('.inventory_item_img a img');
-        let name = this.products[position].$('.inventory_item_description a');
-        let description = this.products[position].$('.inventory_item_desc');
-        let price = this.products[position].$('.inventory_item_price');
-        let addToCart = this.products[position].$('button');
+        const image = this.products[position].$('.inventory_item_img a');
+        const imageSrc = this.products[position].$('.inventory_item_img a img');
+        const name = this.products[position].$('.inventory_item_description a');
+        const description = this.products[position].$('.inventory_item_desc');
+        const price = this.products[position].$('.inventory_item_price');
+        const addToCart = this.products[position].$('button');
 
         return { image, imageSrc, name, description, price, addToCart }
     }
@@ -43,7 +43,7 @@ class ProductsPage extends Page {
     }
 
     getSortedList (criteria) {
-        let productsList = [];
+        const productsList = [];
         for (let i = 0; i < this.products.length; i++) {
             let product = this.selectProduct(i);
             if (criteria === 'name') {

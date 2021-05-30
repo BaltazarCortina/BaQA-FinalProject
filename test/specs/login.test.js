@@ -48,7 +48,6 @@ describe('Testing LOGIN section:', () => {
         })
     })
 
-
     it ('Should deny access when fields are left empty', () => {
         LoginPage.open();
         LoginPage.login('', '');
@@ -89,6 +88,13 @@ describe('Testing LOGIN section:', () => {
     it ('Should deny access to inexistent user', () => {
         LoginPage.open();
         LoginPage.login('different_user', 'secret_sauce');
+    
+        expect(LoginPage.errorMsg).toHaveText('Epic sadface: Username and password do not match any user in this service');
+    })
+
+    it ('Should deny access when fields are filled with a blank space', () => {
+        LoginPage.open();
+        LoginPage.login(' ', ' ');
     
         expect(LoginPage.errorMsg).toHaveText('Epic sadface: Username and password do not match any user in this service');
     })

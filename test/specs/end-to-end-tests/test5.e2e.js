@@ -4,7 +4,7 @@ const CartPage = require('../../pageobjects/cart.page');
 const CheckoutPage = require('../../pageobjects/checkout.page');
 const MenuPage = require('../../pageobjects/menu.page');
 
-describe('End to end test number 4:', () => {
+describe('End to end test number 5:', () => {
     const cartItems = [];
     let itemsTotal = 0;
 

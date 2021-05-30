@@ -113,9 +113,34 @@ describe('Testing CART section:', () => {
         })
     })
     
-    it ('Proceed to checkout', () => {
-        CartPage.checkout();
+    describe ('Check "Checkout" and "Continue shopping" buttons', () => {
+        it ('Continue shopping', () => {
+            CartPage.continueShopping();
+            
+            expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+        })
+
+        it ('Go back to the cart and proceed to checkout', () => {
+            CartPage.goToCart();
+            CartPage.checkout();
+            
+            expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-step-one.html');
+        })
+    })
+
+    describe ('Check that the cart is empty if no product is added', () => {
+        beforeAll('Open Products section', () => {
+            MenuPage.resetApp();
+        })
         
-        expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-step-one.html');
+        it ('Check that there are no items', () => {
+            CartPage.goToCart();
+
+            expect(CartPage.cartProducts).toBeElementsArrayOfSize(0);
+        })
+
+        it ('Check that there is no counter in the cart icon', () => {
+            expect(CartPage.counter).not.toExist();
+        })
     })
 })

@@ -1,7 +1,6 @@
 const LoginPage = require('../../pageobjects/login.page');
 const ProductsPage = require('../../pageobjects/products.page');
 const ProductPage = require('../../pageobjects/product.page');
-const FooterPage = require('../../pageobjects/footer.page');
 const CartPage = require('../../pageobjects/cart.page');
 const CheckoutPage = require('../../pageobjects/checkout.page');
 const MenuPage = require('../../pageobjects/menu.page');
@@ -174,7 +173,7 @@ describe('End to end test number 3:', () => {
         expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
     })
 
-    it ('Sort the list by prize from Low to High', () => {
+    it ('Sort the list by prize from High to Low', () => {
         ProductsPage.sortBy('HtoL');
         const sortedList = ProductsPage.getSortedList('price').map(x => parseFloat(x.split('$').join('')));
         const unsortedList = sortedList.slice();

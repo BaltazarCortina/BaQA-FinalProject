@@ -18,8 +18,8 @@ class LoginPage extends Page {
 
     standardLogin () {
         this.open();
-        let username = 'standard_user';
-        let password = 'secret_sauce';
+        const username = 'standard_user';
+        const password = 'secret_sauce';
         this.inputUsername.setValue(username);  
         this.inputPassword.setValue(password);
         this.submit();

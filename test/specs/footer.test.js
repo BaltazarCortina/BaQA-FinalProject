@@ -4,6 +4,7 @@ const FooterPage = require('../pageobjects/footer.page');
 describe('Testing FOOTER section:', () => {
     beforeAll('Open page and login with standard account', () => {
         LoginPage.standardLogin();
+        browser.pause(1000);
     })
 
     it ('Twitter\'s link', () => {

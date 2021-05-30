@@ -18,21 +18,24 @@ describe('Testing CHECKOUT section:', () => {
         })  
         
         afterEach('Open Products section', () => {
-            browser.refresh();
+            CheckoutPage.open();
         })
 
         it ('Leaving every field empty', () => {
             CheckoutPage.fillInformation('', '', '');
+
             expect(CheckoutPage.errorMsg).toHaveText('Error: First Name is required');
         })
 
         it ('Filling only "First Name"', () => {
             CheckoutPage.fillInformation('FirstName', '', '');
+            
             expect(CheckoutPage.errorMsg).toHaveText('Error: Last Name is required');
         })
 
         it ('Filling only "Last Name"', () => {
             CheckoutPage.fillInformation('', 'LastName', '');
+            
             expect(CheckoutPage.errorMsg).toHaveText('Error: First Name is required');
         })
 
@@ -62,6 +65,12 @@ describe('Testing CHECKOUT section:', () => {
 
         it ('Filling every field', () => {
             CheckoutPage.fillInformation('FirstName', 'LastName', 'Zip');
+
+            expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-step-two.html');
+        })
+
+        it ('Filling every field with a blank space. *COMMENT: Should have some kind of validation', () => {
+            CheckoutPage.fillInformation(' ', ' ', ' ');
 
             expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-step-two.html');
         })
@@ -164,14 +173,22 @@ describe('Testing CHECKOUT section:', () => {
         })
     })
 
-    it ('Cancel purchase', () => {
-        CheckoutPage.cancel();
-
-        expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+    describe ('Cancel purchase and check that the cart doesn\'t reset', () => {
+        it ('Cancel purchase', () => {
+            CheckoutPage.cancel();
+    
+            expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+        })
+    
+        it ('Check that the products are still in the cart', () => {
+            CartPage.goToCart();
+            
+            expect(CartPage.cartProducts).toBeElementsArrayOfSize(2);
+        })
     })
     
     describe ('Finish purchase and check that the cart resets', () => {
-        beforeAll('Reset app status and open Products section', () => {
+        beforeAll('Go back to checkout and fill in the information', () => {
             CartPage.goToCart();
             CartPage.checkout();
             CheckoutPage.fillInformation('FirstName', 'LastName', 'Zip');
@@ -184,11 +201,38 @@ describe('Testing CHECKOUT section:', () => {
             expect(CheckoutPage.successMsg).toHaveText('THANK YOU FOR YOUR ORDER');
         })
     
-        it ('Completing purchase', () => {
+        it ('Check that the cart is empty', () => {
             CheckoutPage.backHome();
             CartPage.goToCart();
             
             expect(CartPage.cartProducts).toBeElementsArrayOfSize(0);
+        })
+    })
+
+    describe ('Finish purchase with no items in the cart', () => {
+        beforeAll('Reset app status and go to Products section', () => {
+            MenuPage.resetApp();
+            ProductsPage.open();
+        })  
+
+        it ('Open cart and check that there are no items', () => {
+            CartPage.goToCart();
+    
+            expect(CartPage.cartProducts).toBeElementsArrayOfSize(0);
+        })
+
+        it ('Proceed to checkout and check that there are no items', () => {
+            CartPage.checkout();
+            CheckoutPage.fillInformation('FirstName', 'LastName', 'Zip');
+    
+            expect(CheckoutPage.cartProducts).toBeElementsArrayOfSize(0);
+        })
+
+        it ('Complete purchase. *COMMENT: Should not allow you to finish the purchase with no items', () => {
+            CheckoutPage.finish();
+    
+            expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-complete.html');
+            expect(CheckoutPage.successMsg).toHaveText('THANK YOU FOR YOUR ORDER');
         })
     })
 })
